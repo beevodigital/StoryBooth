@@ -15,9 +15,15 @@ const {
   TextInput,
 } = ReactNative;
 
+import Countdown from "./Countdown";
+var CountdownOverlay = require('./CountdownOverlay');
+
 class IntroPage extends React.Component{
   constructor(props) {
     super(props)
+
+    this.handleEnd = this.handleEnd.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       phoneNumber: ''
@@ -25,6 +31,7 @@ class IntroPage extends React.Component{
   }
 
   navSecond(){
+    this.countdown.stopCountdown();
     console.log("Intro Page Phone Number navSecond " + this.state.phoneNumber);
 
     //we need to check if the phone number is valid
@@ -44,9 +51,30 @@ class IntroPage extends React.Component{
     }
   }
 
+  componentDidMount() {
+      this.handleClick();
+  }
+
+  handleClick() {
+    this.setState({countdownStarted: true});
+  }
+
+  handleEnd() {
+    this.setState({countdownStarted: false});
+    this.props.navigator.push({
+      id: 'splashpage'
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
+      { this.state.countdownStarted
+          ? (<Countdown style="display:none" ref={(c) => { this.countdown = c }} onComplete={this.handleEnd} count={10}>
+              <CountdownOverlay countdownText={styles.takingPictureCountdownText}/>
+            </Countdown>)
+          : null }
+
         <View style={styles.leftColumn}>
 
             <View >
@@ -171,7 +199,7 @@ var styles = StyleSheet.create({
   enterPhoneArrow:{
     width:120,
     height:120,
-    marginTop:100,
+    marginTop:65,
     marginLeft:25,
     marginBottom:10
   },
@@ -222,8 +250,9 @@ var styles = StyleSheet.create({
     //fontSize:30
   },
   phoneNumberError:{
-    borderColor:'#FF0000',
-    borderWidth:3
+    //borderColor:'#FF0000',
+    //borderWidth:3,
+    color:'#ff0000'
   },
   image: {
     //width: 100,

@@ -30,7 +30,7 @@ class SplashPage extends React.Component{
   render() {
     return (
       <TouchableHighlight style={styles.container} onPress={this.navSecond.bind(this)}>
-        <View style={styles.containerWidth}>
+        <View style={styles.containerWidth} accessible={true} accessibilityLabel={'Hello! Welcome to Story Booth!'}>
           <View >
             <Image source={require('./img/SplashIcons.png')}  style={styles.splashIcons}/>
           </View>

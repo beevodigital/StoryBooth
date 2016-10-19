@@ -15,14 +15,21 @@ const {
   TextInput,
 } = ReactNative;
 
+import Countdown from "./Countdown";
+var CountdownOverlay = require('./CountdownOverlay');
+
 class Initials extends React.Component{
   constructor(props) {
     super(props)
 
+    this.handleEnd = this.handleEnd.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
     console.log("Initials Phone number: " + this.props.phoneNumber);
 
     this.state = {
-      initials: ''
+      initials: '',
+      countdownStarted: false,
     }
   }
 
@@ -40,6 +47,8 @@ class Initials extends React.Component{
       this._initialsContainer.setNativeProps({style: styles.initialsError});
     }
     else {
+      this.countdown.stopCountdown();
+
       this.props.navigator.push({
         id: 'audiorecord',
         passProps: {
@@ -51,10 +60,30 @@ class Initials extends React.Component{
 
   }
 
+  componentDidMount() {
+      this.handleClick();
+  }
+
+  handleClick() {
+    this.setState({countdownStarted: true});
+  }
+
+  handleEnd() {
+    this.setState({countdownStarted: false});
+    this.props.navigator.push({
+      id: 'splashpage'
+    })
+  }
+
   render() {
     return (
       <TouchableHighlight style={styles.container}>
         <View style={styles.containerWidth}>
+        { this.state.countdownStarted
+            ? (<Countdown style="display:none" ref={(c) => { this.countdown = c }} onComplete={this.handleEnd} count={30}>
+                <CountdownOverlay countdownText={styles.takingPictureCountdownText}/>
+              </Countdown>)
+            : null }
           <View >
             <Image source={require('./img/blueArrow.png')}  style={styles.splashIcons}/>
           </View>
@@ -93,7 +122,7 @@ var styles = StyleSheet.create({
   initialsContainer:{
     borderBottomColor:'#ffffff',
     borderBottomWidth:4,
-    marginTop:200,
+    marginTop:75,
     flexDirection:'row'
   },
   initialsError:{

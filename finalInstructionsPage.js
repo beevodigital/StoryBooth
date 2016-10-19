@@ -15,14 +15,25 @@ const {
   TextInput,
 } = ReactNative;
 
+import Countdown from "./Countdown";
+var CountdownOverlay = require('./CountdownOverlay');
+
 class FinalInstructionsPage extends React.Component{
   constructor(props) {
     super(props)
 
-    console.log("Final instructions Phone number: " + this.props.phoneNumber);
+    this.handleEnd = this.handleEnd.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+      countdownStarted: false,
+    }
+
   }
 
   navSecond(){
+    this.countdown.stopCountdown();
+    
     this.props.navigator.push({
         id: 'initials',
         passProps: {
@@ -32,10 +43,30 @@ class FinalInstructionsPage extends React.Component{
 
   }
 
+  componentDidMount() {
+      this.handleClick();
+  }
+
+  handleClick() {
+    this.setState({countdownStarted: true});
+  }
+
+  handleEnd() {
+    this.setState({countdownStarted: false});
+    this.props.navigator.push({
+      id: 'splashpage'
+    })
+  }
+
   render() {
     return (
       <TouchableHighlight style={styles.container} onPress={this.navSecond.bind(this)}>
         <View style={styles.containerWidth}>
+        { this.state.countdownStarted
+            ? (<Countdown style="display:none" ref={(c) => { this.countdown = c }} onComplete={this.handleEnd} count={30}>
+                <CountdownOverlay countdownText={styles.takingPictureCountdownText}/>
+              </Countdown>)
+            : null }
           <View >
             <Image source={require('./img/instructionsIcon.png')}  style={styles.splashIcons}/>
           </View>
