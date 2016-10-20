@@ -115,7 +115,7 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     padding:25,
-    backgroundColor:'#3f85fc'
+    backgroundColor:'#3f84ff'
     //flexDirection:'row'
     //backgroundColor: '#C9C9C9',
   },
@@ -174,7 +174,7 @@ var styles = StyleSheet.create({
     fontSize:30,
     color:'#ffffff',
     textAlign:'center',
-    color:'#3f85fc'
+    color:'#3f84ff'
   },
   flexRow:{
     flexDirection:'row'
@@ -188,7 +188,7 @@ var styles = StyleSheet.create({
   },
   legalText:{
     fontSize:12,
-    color:'#3f85fc'
+    color:'#3f84ff'
   },
 
   phoneNumberError:{

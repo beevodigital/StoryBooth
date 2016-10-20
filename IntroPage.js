@@ -70,15 +70,16 @@ class IntroPage extends React.Component{
     return (
       <View style={styles.container}>
       { this.state.countdownStarted
-          ? (<Countdown style="display:none" ref={(c) => { this.countdown = c }} onComplete={this.handleEnd} count={10}>
+          ? (<Countdown style="display:none" ref={(c) => { this.countdown = c }} onComplete={this.handleEnd} count={30}>
               <CountdownOverlay countdownText={styles.takingPictureCountdownText}/>
             </Countdown>)
           : null }
 
         <View style={styles.leftColumn}>
 
-            <View >
-              <Image source={require('./img/IntroIcons.png')}  style={styles.mainIcons}/>
+            <View  style={styles.mainIcons}>
+              <Image source={require('./img/WhiteArrow.png')}  style={styles.WhiteArrow}/>
+              <Image source={require('./img/TravelIcon.png')}  style={styles.TravelIcon}/>
             </View>
             <View>
               <Text style={styles.boldHeadline}>
@@ -156,8 +157,17 @@ var styles = StyleSheet.create({
     width:600
   },
   mainIcons:{
-    width:411,
-    height:182
+    flexDirection:'row',
+    paddingTop:50
+  },
+  WhiteArrow:{
+    width:150,
+    height:150
+  },
+  TravelIcon:{
+    width:150,
+    height:150,
+    marginLeft:50
   },
   boldHeadline:{
     fontSize:120,
