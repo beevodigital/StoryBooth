@@ -36,7 +36,7 @@ class StoryBooth extends React.Component{
     return (
       <Navigator
         style={styles.container}
-        initialRoute={{id: 'intropage', index: 0}}
+        initialRoute={{id: 'audiorecord', index: 0}}
         renderScene={this.navigatorRenderScene}/>
     );
   }

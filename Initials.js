@@ -85,10 +85,10 @@ class Initials extends React.Component{
               </Countdown>)
             : null }
           <View >
-            <Image source={require('./img/blueArrow.png')}  style={styles.splashIcons}/>
+            <Image source={require('./img/BlueArrow.png')}  style={styles.splashIcons}/>
           </View>
           <View style={styles.initialsContainer} ref={component => this._initialsContainer = component}>
-            <Image source={require('./img/InitialsX.png')}  style={styles.InitalsX}/>
+            <Image source={require('./img/WhiteX.png')}  style={styles.InitalsX}/>
             <TextInput
               ref={component => this._initials = component}
               style={styles.phonenumber}

@@ -70,15 +70,15 @@ class TakePictures extends React.Component{
       <View style={styles.container}>
         <View style={styles.pictureBanner}>
           <View style={styles.pictureBannerLeft}>
-            <Image source={require('./img/blueArrowDown.png')}  style={styles.pictureBannerLeftBlueArrowDown}/>
-            <Image source={require('./img/cameraIcon.png')}  style={styles.pictureBannerLeftCameraIcon}/>
+            <Image source={require('./img/WhiteArrowDown.png')}  style={styles.pictureBannerLeftBlueArrowDown}/>
+            <Image source={require('./img/WhiteCamera.png')}  style={styles.pictureBannerLeftCameraIcon}/>
           </View>
           <View style={styles.pictureBannerMiddle}>
             <Text style={styles.pictureBannerMiddleBoldText}>Smile</Text>
             <Text style={styles.pictureBannerMiddleRegularText}>Sonreir</Text>
           </View>
           <View style={styles.pictureBallerRight}>
-            <Image source={require('./img/blueArrowDown.png')}  style={styles.pictureBallerRightBlueArrowDown}/>
+            <Image source={require('./img/WhiteArrowDown.png')}  style={styles.pictureBallerRightBlueArrowDown}/>
           </View>
         </View>
         <Camera

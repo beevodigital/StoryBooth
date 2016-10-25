@@ -33,7 +33,7 @@ class FinalInstructionsPage extends React.Component{
 
   navSecond(){
     this.countdown.stopCountdown();
-    
+
     this.props.navigator.push({
         id: 'initials',
         passProps: {
@@ -67,14 +67,15 @@ class FinalInstructionsPage extends React.Component{
                 <CountdownOverlay countdownText={styles.takingPictureCountdownText}/>
               </Countdown>)
             : null }
-          <View >
-            <Image source={require('./img/instructionsIcon.png')}  style={styles.splashIcons}/>
-          </View>
+            <View  style={styles.mainIcons}>
+              <Image source={require('./img/WhiteArrow.png')}  style={styles.WhiteArrow}/>
+              <Image source={require('./img/WhiteMic.png')}  style={styles.WhiteMic}/>
+            </View>
           <View>
             <Text style={styles.subHead}>Once you've recorded your story, it's all set for future Arts@MSP See 18 screnings!</Text>
           </View>
           <View style={styles.flexRow}>
-            <Image source={require('./img/fingerIcon.png')}  style={styles.fingerIcon}/>
+            <Image source={require('./img/WhiteTouch.png')}  style={styles.fingerIcon}/>
             <Text style={styles.CTAtext}>
               Tap Anywhere to continue
             </Text>
@@ -99,14 +100,23 @@ var styles = StyleSheet.create({
   },
   flexRow:{
     flexDirection:'row',
-    marginTop:175
+    marginTop:125
   },
   containerWidth:{
     width:800
   },
-  splashIcons:{
-    width:411,
-    height:182
+  mainIcons:{
+    flexDirection:'row',
+    paddingTop:50
+  },
+  WhiteArrow:{
+    width:150,
+    height:150
+  },
+  WhiteMic:{
+    width:150,
+    height:150,
+    marginLeft:50
   },
   boldHeadline:{
     fontSize:130,
@@ -120,12 +130,14 @@ var styles = StyleSheet.create({
   subHead:{
     fontSize:60,
     color:'#ffffff',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    marginTop:10
   },
   CTAtext:{
     color:'#ffffff',
     paddingTop:15,
-    fontSize:20
+    fontSize:20,
+    marginLeft:10
   },
   fingerIcon:{
     width:53,

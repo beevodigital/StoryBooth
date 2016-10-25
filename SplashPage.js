@@ -31,22 +31,23 @@ class SplashPage extends React.Component{
     return (
       <TouchableHighlight style={styles.container} onPress={this.navSecond.bind(this)}>
         <View style={styles.containerWidth} accessible={true} accessibilityLabel={'Hello! Welcome to Story Booth!'}>
-          <View >
-            <Image source={require('./img/SplashIcons.png')}  style={styles.splashIcons}/>
+          <View  style={styles.mainIcons}>
+            <Image source={require('./img/BlueArrow.png')}  style={styles.BlueArrow}/>
+            <Image source={require('./img/BlueCamera.png')}  style={styles.BlueCamera}/>
           </View>
           <View>
             <Text style={styles.boldHeadline}>
               Hello!
             </Text>
             <Text style={styles.lightHeadline}>
-              !Hola!
+              Hola!
             </Text>
           </View>
           <View>
             <Text style={styles.subHead}>Want to make you own shotfilm for See 18, MSP's film screening room?</Text>
           </View>
           <View style={styles.flexRow}>
-            <Image source={require('./img/fingerIcon.png')}  style={styles.fingerIcon}/>
+            <Image source={require('./img/BlueTouch.png')}  style={styles.fingerIcon}/>
             <Text style={styles.CTAtext}>
               Tap Anywhere to start
             </Text>
@@ -76,6 +77,19 @@ var styles = StyleSheet.create({
     marginTop:10,
     marginBottom:15
   },
+  mainIcons:{
+    flexDirection:'row',
+    paddingTop:50
+  },
+  BlueArrow:{
+    width:150,
+    height:150
+  },
+  BlueCamera:{
+    width:150,
+    height:150,
+    marginLeft:50
+  },
   containerWidth:{
     width:800
   },
@@ -99,11 +113,12 @@ var styles = StyleSheet.create({
   CTAtext:{
     color:'#3f85fc',
     paddingTop:15,
-    fontSize:20
+    fontSize:20,
+    marginLeft:10
   },
   fingerIcon:{
     width:53,
-    height:53
+    height:53,
   },
   legalText:{
     fontSize:12,

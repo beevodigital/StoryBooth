@@ -95,12 +95,12 @@ class AudioRecord extends React.Component{
           </Text>
         </View>
         <View>
-          <Image source={require('./img/recordWaves.png')}  style={styles.recordWaves}/>
+          <Image source={require('./img/Record.png')}  style={styles.recordWaves}/>
         </View>
 
         <View style={styles.recordingCTA}>
           <View style={styles.recordingStop}>
-            <Image source={require('./img/stopIcon.png')}  style={styles.stopIcon}/>
+            <Image source={require('./img/StopButton.png')}  style={styles.stopIcon}/>
             {this._renderButton("Press To Stop", () => {this._stop()},styles.stopText )}
           </View>
 
@@ -200,11 +200,12 @@ var styles = StyleSheet.create({
     //marginTop:50
   },
   stopIcon:{
-    width:60,
-    height:62
+    width:62,
+    height:62,
+    marginLeft:5
   },
   recordWaves:{
-    width:1091,
+    width:1010,
     height:482
   },
   recordingIcon:{
@@ -214,9 +215,10 @@ var styles = StyleSheet.create({
       width:20,
       height:20,
       backgroundColor:'#ff0000',
-      justifyContent:'center',
+      //justifyContent:'center',
       padding:5,
-      marginTop:25
+      marginTop:25,
+      marginLeft:75
   },
   recordingText:{
     //borderColor:'#FF0000',
